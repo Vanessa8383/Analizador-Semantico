@@ -7,9 +7,9 @@ import application.analizador.errores.Error1;
 import application.analizador.errores.Error2;
 import application.analizador.errores.Error17;
 import application.analizador.errores.Error16;
-import application.analizador.errores.Error18;
 import application.analizador.errores.Error19;
-
+import application.analizador.errores.Error3;
+import application.analizador.errores.Error18;
 
 
 public class AnalizadorSemantico {
@@ -37,13 +37,14 @@ public class AnalizadorSemantico {
         Error16 error16 = new Error16();
         errores.addAll(error16.validar(tokens));
 
-        Error18 error18 = new Error18();
-        errores.addAll(error18.validar(tokens));
-
         Error19 error19=new Error19();
         errores.addAll(error19.validar(tokens));
 
+        Error3 error3 = new Error3();
+        errores.addAll(error3.validar(tokens));
 
+        Error18 error18 = new Error18();
+        errores.addAll(error18.validar(tokens));
 
     }
 
