@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="contenedorPrincipal" prefHeight="700" prefWidth="1100" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.analizador.TablaController">
+
+    <top>
+        <VBox spacing="10">
+            <padding>
+                <Insets bottom="12" left="12" right="12" top="12" />
+            </padding>
+            <Label text="Analizador de codigo C++  Tabla de Tokens">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font></Label>
+            <HBox spacing="8">
+                <Button onAction="#abrirArchivo" text="Abrir archivo" />
+                <Button onAction="#analizarCodigo" text="Analizar" />
+                <Button onAction="#limpiarEditor" text="Limpiar" />
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <SplitPane dividerPositions="0.5110206689221032">
+            <items>
+
+                <VBox spacing="8">
+                    <padding>
+                        <Insets bottom="8" left="8" right="8" top="8" />
+                    </padding>
+                    <Label text="Resultados">
+                  <font>
+                     <Font size="14.0" />
+                  </font></Label>
+                    <TabPane fx:id="pestanasResultado" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+                        <tabs>
+                            <Tab text="Tokens">
+                                <TableView fx:id="tablaTokens" prefHeight="462.0" prefWidth="531.0">
+                                    <columns>
+                                        <TableColumn fx:id="columnaLexema" prefWidth="180.0" text="Lexema" />
+                                        <TableColumn fx:id="columnaTokenTipo" prefWidth="100.0" text="Tipo" />
+                                        <TableColumn fx:id="columnaTokenLinea" prefWidth="100.0" text="Linea" />
+                                        <TableColumn fx:id="columnaTokenInicio" text="Inicio" />
+                                        <TableColumn fx:id="columnaTokenFin" text="Fin" />
+                                    </columns>
+                                </TableView>
+                            </Tab>
+                        </tabs>
+                    </TabPane>
+                </VBox>
+            <SplitPane>
+               <items>
+                  <VBox spacing="8">
+                     <padding>
+                        <Insets bottom="8" left="8" right="8" top="8" />
+                     </padding>
+                     <children>
+                        <Label text="Error">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TabPane fx:id="pestanasResultado1" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS" />
+                         <HBox prefHeight="531.0" prefWidth="531.0">
+                             <TextArea fx:id="numerosLineas" editable="false"
+                                       focusTraversable="false" mouseTransparent="true"
+                                       minWidth="50.0" prefWidth="50.0" maxWidth="50.0"
+                                       wrapText="false"
+                                       style="-fx-font-family: 'Consolas'; -fx-font-size: 13px; -fx-text-fill: #777777; -fx-control-inner-background: #F3F4F6;" />
+
+                             <TextArea fx:id="textArea" prefHeight="531.0" prefWidth="481.0"
+                                       wrapText="false" HBox.hgrow="ALWAYS"
+                                       style="-fx-font-family: 'Consolas'; -fx-font-size: 13px;" />
+                         </HBox>
+                        <TableView fx:id="tablaErrores" prefHeight="331.0" prefWidth="553.0">
+                          <columns>
+                            <TableColumn fx:id="columnaErrorLinea" minWidth="20.0" prefWidth="180.0" text="Linea del error" />
+                            <TableColumn fx:id="columnaComandoEsperado" prefWidth="160.0" text="Comando esperado" />
+                              <TableColumn fx:id="columnaDescripcion" prefWidth="180.0" text="Descripcion" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </VBox>
+               </items>
+            </SplitPane>
+            </items>
+        </SplitPane>
+    </center>
+</BorderPane>
